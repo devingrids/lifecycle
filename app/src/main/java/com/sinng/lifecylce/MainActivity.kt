@@ -1,14 +1,18 @@
 package com.sinng.lifecylce
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import com.sinng.lifecylce.databinding.MainActivityBinding
 
 class MainActivity : ComponentActivity() {
     private lateinit var binding: MainActivityBinding
+    private lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,6 +20,18 @@ class MainActivity : ComponentActivity() {
         val view = binding.root
         setContentView(view)
         Log.i("Log", "onCreate() MainActivity" + System.currentTimeMillis())
+
+        resultLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    val data: Intent? = result.data
+                    Toast.makeText(
+                        this@MainActivity,
+                        data?.getStringExtra("RETURN"),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
     }
 
     override fun onStart() {
@@ -30,21 +46,7 @@ class MainActivity : ComponentActivity() {
         binding.button.setOnClickListener {
             val intent = Intent(this, SecondActivity::class.java)
             intent.putExtra("TEXT_VALUE", binding.editTextMain.text.toString())
-            startActivityForResult(intent, 10)
-        }
-    }
-
-    @Deprecated("Deprecated in Java")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 10 && resultCode == RESULT_OK) {
-            data?.apply {
-                Toast.makeText(
-                    this@MainActivity,
-                    data.getStringExtra("RETURN"), Toast.LENGTH_SHORT
-                )
-                    .show()
-            }
+            resultLauncher.launch(intent)
         }
     }
 

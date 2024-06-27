@@ -26,7 +26,7 @@ class SecondActivity : ComponentActivity() {
 
         binding.button.setOnClickListener {
             val data = Intent()
-            data.putExtra("RETURN", binding.editTextSecond.toString())
+            data.putExtra("RETURN", binding.editTextSecond.text.toString())
             setResult(RESULT_OK, data)
             finish()
 

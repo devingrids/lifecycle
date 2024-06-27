@@ -22,7 +22,7 @@ Um exemplo disso é se voce colocar chamadas de banco de dados por exemplo.
 O sistema invoca esse callback imediatamente antes de a atividade começar a interagir com o usuario. 
 A maior parte da funcionalidade de um app é implementada no onResume() 
 
-4) onPaused()
+4) onPause()
 O sistema invoca esse callback quando a activity sai de foco. Quando a activity perde o foco, ela entra em um estado de "Pausado"
 uma activity no estado "Pausado" pode continuar atualizando a IU se o usuario estiver esperando por isso.
 

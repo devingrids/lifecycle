@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">LifeCylce</string>
+    <string name="title_main_activity">Main Activity</string>
+    <string name="text_second_activity">Abrir Second Activity</string>
+    <string name="open_first_activity">Abrir First Activity</string>
+    <string name="title_second_activity">Second Activity</string>
 </resources>

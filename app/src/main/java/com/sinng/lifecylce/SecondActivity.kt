@@ -13,10 +13,13 @@ class SecondActivity : ComponentActivity() {
         binding = SecondActivityBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        Log.i("Log", "onCreate()" + System.currentTimeMillis())
-        binding.button.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("Log", "onResume() Second Activity " + System.currentTimeMillis())
+        binding.button.setOnClickListener {
+            finish()
         }
     }
 }

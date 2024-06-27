@@ -13,17 +13,17 @@ class MainActivity : ComponentActivity() {
         binding = MainActivityBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        Log.i("Log", "onCreate()" + System.currentTimeMillis())
+        Log.i("Log", "onCreate() MainActivity" + System.currentTimeMillis())
     }
 
     override fun onStart() {
         super.onStart()
-        Log.i("Log", "onStart()" + System.currentTimeMillis())
+        Log.i("Log", "onStart() MainActivity" + System.currentTimeMillis())
     }
 
     override fun onResume() {
         super.onResume()
-        Log.i("Log", "onResume()" + System.currentTimeMillis())
+        Log.i("Log", "onResume() MainActivity" + System.currentTimeMillis())
         binding.button.setOnClickListener{
             val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
@@ -32,9 +32,16 @@ class MainActivity : ComponentActivity() {
 
     override fun onPause() {
         super.onPause()
-        Log.i("Log", "onPause()" + System.currentTimeMillis())
+        Log.i("Log", "onPause() MainActivity" + System.currentTimeMillis())
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i("Log", "onStop() MainActivity" + System.currentTimeMillis())
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("Log", "onDestroy() MainActivity" + System.currentTimeMillis())
     }
 }
-
-
-

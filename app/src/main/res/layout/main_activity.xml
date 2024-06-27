@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/edit_text_main"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/title_main_activity"
+        android:layout_margin="16dp"
         android:textAlignment="center"
-        android:textSize="48sp"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,9 +22,9 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_second_activity"
         android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text" />
+        android:text="@string/close_activity"
+        app:layout_constraintEnd_toEndOf="@+id/edit_text_main"
+        app:layout_constraintStart_toStartOf="@+id/edit_text_main"
+        app:layout_constraintTop_toBottomOf="@id/edit_text_main" />
 </androidx.constraintlayout.widget.ConstraintLayout>

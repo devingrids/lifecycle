@@ -8,6 +8,7 @@ import com.sinng.lifecylce.databinding.MainActivityBinding
 
 class MainActivity : ComponentActivity() {
     private lateinit var binding: MainActivityBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = MainActivityBinding.inflate(layoutInflater)
@@ -24,8 +25,10 @@ class MainActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         Log.i("Log", "onResume() MainActivity" + System.currentTimeMillis())
+
         binding.button.setOnClickListener{
             val intent = Intent(this, SecondActivity::class.java)
+            intent.putExtra("TEXT_VALUE", binding.editTextMain.text.toString())
             startActivity(intent)
         }
     }

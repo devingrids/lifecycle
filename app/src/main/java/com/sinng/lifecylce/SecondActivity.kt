@@ -15,6 +15,11 @@ class SecondActivity : ComponentActivity() {
         setContentView(view)
     }
 
+    override fun onStart() {
+        super.onStart()
+        binding.textSecond.text = intent.getStringExtra("TEXT_VALUE")
+    }
+
     override fun onResume() {
         super.onResume()
         Log.i("Log", "onResume() Second Activity " + System.currentTimeMillis())

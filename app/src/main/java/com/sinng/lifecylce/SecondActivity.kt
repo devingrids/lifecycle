@@ -23,8 +23,13 @@ class SecondActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         Log.i("Log", "onResume() Second Activity " + System.currentTimeMillis())
+
         binding.button.setOnClickListener {
+            val data = Intent()
+            data.putExtra("RETURN", binding.editTextSecond.toString())
+            setResult(RESULT_OK, data)
             finish()
+
         }
     }
 }
